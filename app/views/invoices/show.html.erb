@@ -2,7 +2,11 @@
 
 <p>
   <strong>Company:</strong>
-  <%= @invoice.company %>
+  <%= @invoice.company.name %>
+</p>
+<p>
+  <strong>Customer:</strong>
+  <%= @invoice.customer.name %>
 </p>
 
 <%= link_to 'Edit', edit_invoice_path(@invoice) %> |
