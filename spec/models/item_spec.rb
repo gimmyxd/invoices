@@ -18,4 +18,10 @@ describe Item, type: :model do
     expect(item).to_not be_valid
   end
 
+  describe '.total price' do
+    it 'calculates total price for an item' do
+      item = FactoryGirl.create :item, quantity: 10, price: 12.5
+      expect(item.total_price).to eql 125.0
+    end
+  end
 end
