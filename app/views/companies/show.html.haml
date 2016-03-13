@@ -1,14 +1,47 @@
-%p#notice= notice
-%p
-  %strong Name:
-  = @company.name
-%h2 Invoices
-- if @company.invoices.any?
-  %ul
-    - @company.invoices.each do |invoice|
-      %li= link_to invoice, invoice
-- else
-  %p no invoices
-= link_to 'Edit', edit_company_path(@company)
-|
-= link_to 'Back', companies_path
+.container-fluid
+  .row
+    .col-md-8.col-md-offset-2
+      %p#notice= notice
+      %p
+        %strong Company Name:
+        = @company.name
+        - @company.invoices.each do |invoice|
+          %table.table
+            %thead
+              %h2 Sold Invoice
+              %tr
+                %th Name
+                %th Description
+                %th Unit Price
+                %th Quantity
+                %th Customer
+                %th Total price
+            %tbody
+            - invoice.items.each do |item|
+              %tr
+                %td= item.name
+                %td= item.description
+                %td= item.price
+                %td= item.quantity
+                %td= item.invoice.customer.name
+                %td= number_to_currency(item.total_price)
+        - @company.customer_invoices.each do |invoice|
+          %table.table
+            %thead
+              %h2 Bought Invoice
+              %tr
+                %th Name
+                %th Description
+                %th Unit Price
+                %th Quantity
+                %th Seller
+                %th Total price
+            %tbody
+            - invoice.items.each do |item|
+              %tr
+                %td= item.name
+                %td= item.description
+                %td= item.price
+                %td= item.quantity
+                %td= item.invoice.company.name
+                %td= number_to_currency(item.total_price)

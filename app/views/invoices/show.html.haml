@@ -1,21 +1,26 @@
-%p#notice= notice
-%p
-  %strong Company:
-  = @invoice.company.name
-%p
-  %strong Customer:
-  = @invoice.customer.name
-%p
-%table
-  %thead
-    %strong Items:
-  %tbody
-    - @invoice.items.each do |item|
-      %tr
-        %td= item.name
-        %td= item.description
-        %td= item.price
-        %td= item.quantity
-= link_to 'Edit', edit_invoice_path(@invoice)
-|
-= link_to 'Back', invoices_path
+.container-fluid
+  .row
+    .col-md-8.col-md-offset-2
+      %p#notice= notice
+      %p
+        %strong Company:
+        = @invoice.company.name
+      %p
+        %strong Customer:
+        = @invoice.customer.name
+      %p
+      %table.table
+        %thead
+          %th Name
+          %th Description
+          %th Unit Price
+          %th Quantity
+          %th Total price
+        %tbody
+          - @invoice.items.each do |item|
+            %tr
+              %td= item.name
+              %td= item.description
+              %td= item.price
+              %td= item.quantity
+              %td= number_to_currency(item.total_price)
