@@ -7,28 +7,30 @@
       %ul
         - @invoice.errors.full_messages.each do |message|
           %li= message
-  .field
-    = f.collection_select :company_id, Company.order(:name),:id,:name
-  .field
-    = f.collection_select :customer_id, Company.order(:name),:id,:name
+  .form-group
+    = f.label :company_id
+    = f.collection_select :company_id, Company.order(:name),:id,:name, {prompt: "Select a Seller"}, {class: "form-control"}
+    = f.label :customer_id
+    = f.collection_select :customer_id, Company.order(:name),:id,:name, {prompt: "Select a Customer"}, {class: "form-control"}
   %h2 Items
   = f.fields_for :items do |item|
     .item_fields
       .field
         = item.label :name
         %br/
-        = item.text_field :name
+        = item.text_field :name, class: "form-control"
       .field
         = item.label :description
         %br/
-        = item.text_area :description
+        = item.text_area :description, class: "form-control"
       .field
         = item.label :price
         %br/
-        = item.text_field :price
+        = item.text_field :price, class: "form-control"
       .field
         = item.label :quantity
         %br/
-        = item.number_field :quantity
-  .actions
-    = f.submit
+        = item.number_field :quantity, class: "form-control"
+      .actions.pull-right
+        = f.button :submit, class: "btn btn-primary"
+        = link_to 'Back', invoices_path, class: "btn btn-default"
