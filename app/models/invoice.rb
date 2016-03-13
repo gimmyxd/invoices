@@ -6,10 +6,6 @@ class Invoice < ActiveRecord::Base
   accepts_nested_attributes_for :items, reject_if: :all_blank, allow_destroy: true
 
   def total
-    @total = 0
-    self.items.each do |item|
-      @total += item.total_price
-    end
-    @total
+    items.inject(0) { |sum, item| sum += item.total_price }
   end
 end

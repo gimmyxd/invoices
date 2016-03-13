@@ -5,19 +5,7 @@ class Company < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: true
 
-  def to_receive
-    @total = 0
-    self.invoices.each do |invoice|
-      @total += invoice.total
-    end
-    @total
-  end
-
-  def to_pay
-    @total = 0
-    self.customer_invoices.each do |invoice|
-      @total += invoice.total
-    end
-    @total
+  def calculate_value(invoices)
+    invoices.inject(0) { |sum, invoice| sum += invoice.total }
   end
 end
