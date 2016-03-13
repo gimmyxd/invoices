@@ -2,13 +2,7 @@
   .row
     .col-md-8.col-md-offset-2
       %p#notice= notice
-      %p
-        %strong Company:
-        = @invoice.company.name
-      %p
-        %strong Customer:
-        = @invoice.customer.name
-      %p
+      %h2== Seller: #{@invoice.company.name}  -  Customer: #{@invoice.customer.name}
       %table.table
         %thead
           %th Name

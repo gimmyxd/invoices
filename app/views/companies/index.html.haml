@@ -15,6 +15,6 @@
               %td= company.name
               %td= number_to_currency(company.calculate_value(company.invoices))
               %td= number_to_currency(company.calculate_value(company.customer_invoices))
-              %td= link_to 'Show', company, class: :"btn btn-sm btn-default"
+              %td= link_to 'Details', company, class: :"btn btn-sm btn-default"
               %td= link_to 'Edit', edit_company_path(company), class: :"btn btn-sm btn-default"
               %td= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' },class: :"btn btn-sm btn-danger"

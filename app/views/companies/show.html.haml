@@ -3,12 +3,11 @@
     .col-md-8.col-md-offset-2
       %p#notice= notice
       %p
-        %strong Company Name:
-        = @company.name
+        %h1== Company Name: #{@company.name}
         - @company.invoices.each do |invoice|
           %table.table
             %thead
-              %h2 Sold Invoice
+              %h2.pull-left Sold Invoice
               %tr
                 %th Name
                 %th Description
@@ -28,7 +27,7 @@
         - @company.customer_invoices.each do |invoice|
           %table.table
             %thead
-              %h2 Bought Invoice
+              %h2.pull-left Bought Invoice
               %tr
                 %th Name
                 %th Description
