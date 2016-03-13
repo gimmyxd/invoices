@@ -5,5 +5,16 @@
   <%= @company.name %>
 </p>
 
+<h2>Invoices</h2>
+<% if @company.invoices.any? %>
+<ul>
+ <% @company.invoices.each do |invoice| %>
+<li><%= link_to invoice, invoice %></li>
+ <% end %>
+</ul>
+<% else %>
+<p>no invoices</p>
+<% end %>
+
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>

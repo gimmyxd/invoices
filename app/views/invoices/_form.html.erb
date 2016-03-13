@@ -1,25 +1,43 @@
 <%= form_for(@invoice) do |f| %>
-  <% if @invoice.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@invoice.errors.count, "error") %> prohibited this invoice from being saved:</h2>
+<% if @invoice.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@invoice.errors.count, "error") %> prohibited this invoice from being saved:</h2>
+  <ul>
+    <% @invoice.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<div class="field">
+  <%= f.collection_select :company_id, Company.order(:name),:id,:name %>
+</div>
+<div class="field">
+  <%= f.collection_select :customer_id, Company.order(:name),:id,:name %>
+</div>
 
-      <ul>
-      <% @invoice.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<h2>Items</h2>
+<%= f.fields_for :items do |item| %>
+<div class="item_fields">
   <div class="field">
-    <%= f.label :company_id %><br>
-    <%= f.text_field :company_id %>
+    <%= item.label :name %><br>
+    <%= item.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :customer_ids %><br>
-    <%= f.text_field :customer_id %>
+    <%= item.label :description %><br>
+    <%= item.text_area :description %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="field">
+    <%= item.label :price %><br>
+    <%= item.text_field :price %>
   </div>
+  <div class="field">
+    <%= item.label :quantity %><br>
+    <%= item.number_field :quantity %>
+  </div>
+</div>
+<% end %>
+<div class="actions">
+  <%= f.submit %>
+</div>
 <% end %>

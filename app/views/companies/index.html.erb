@@ -17,6 +17,26 @@
         <td><%= link_to 'Show', company %></td>
         <td><%= link_to 'Edit', edit_company_path(company) %></td>
         <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <table>
+          <thead>
+            <tr>
+              <th>Items</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% company.invoices.each do |invoice| %>
+              <% invoice.items.each do |item| %>
+              <tr>
+                <td><%= item.name %></td>
+                <td><%= item.description %></td>
+                <td><%= item.price %></td>
+                <td><%= item.quantity %></td>
+              </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
       </tr>
     <% end %>
   </tbody>

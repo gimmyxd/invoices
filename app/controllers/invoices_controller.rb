@@ -15,10 +15,12 @@ class InvoicesController < ApplicationController
   # GET /invoices/new
   def new
     @invoice = Invoice.new
+    @items = @invoice.items.build
   end
 
   # GET /invoices/1/edit
   def edit
+    @items = @invoice.items.build
   end
 
   # POST /invoices
@@ -69,6 +71,6 @@ class InvoicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def invoice_params
-      params.require(:invoice).permit(:company_id, :customer_id)
+      params.require(:invoice).permit(:company_id, :customer_id, items_attributes: [:id, :name, :price, :quantity, :description])
     end
 end
