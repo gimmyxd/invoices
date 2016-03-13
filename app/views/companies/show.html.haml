@@ -1,0 +1,14 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @company.name
+%h2 Invoices
+- if @company.invoices.any?
+  %ul
+    - @company.invoices.each do |invoice|
+      %li= link_to invoice, invoice
+- else
+  %p no invoices
+= link_to 'Edit', edit_company_path(@company)
+|
+= link_to 'Back', companies_path
