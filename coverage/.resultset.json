@@ -1,6 +1,53 @@
 {
   "RSpec": {
     "coverage": {
+      "/home/gimmy/workspace/invoices/spec/models/company_spec.rb": [
+        1,
+        null,
+        1,
+        5,
+        null,
+        5,
+        null,
+        2,
+        2,
+        2,
+        2,
+        null
+      ],
+      "/home/gimmy/workspace/invoices/app/models/company.rb": [
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null
+      ],
+      "/home/gimmy/workspace/invoices/spec/models/invoice_spec.rb": [
+        1,
+        null,
+        1,
+        5,
+        null,
+        5,
+        null,
+        2,
+        2,
+        2,
+        2,
+        null,
+        null
+      ],
+      "/home/gimmy/workspace/invoices/app/models/invoice.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null
+      ],
       "/home/gimmy/workspace/invoices/spec/models/item_spec.rb": [
         1,
         null,
@@ -33,17 +80,8 @@
         1,
         1,
         null
-      ],
-      "/home/gimmy/workspace/invoices/app/models/invoice.rb": [
-        1,
-        1,
-        1,
-        null,
-        1,
-        1,
-        null
       ]
     },
-    "timestamp": 1457861577
+    "timestamp": 1457863213
   }
 }
