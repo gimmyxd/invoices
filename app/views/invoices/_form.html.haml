@@ -1,4 +1,4 @@
-= form_for(@invoice) do |f|
+= nested_form_for @invoice do |f|
   - if @invoice.errors.any?
     #error_explanation
       %h2
@@ -13,6 +13,8 @@
     = f.label :customer_id
     = f.collection_select :customer_id, Company.order(:name),:id,:name, {prompt: "Select a Customer"}, {class: "form-control"}
   %h2 Items
+  = f.link_to_add "Add an item", :items, class: "pull-right"
+  %br/
   = f.fields_for :items do |item|
     .item_fields
       .field
@@ -31,6 +33,8 @@
         = item.label :quantity
         %br/
         = item.number_field :quantity, class: "form-control"
-      .actions.pull-right
-        = f.button :submit, class: "btn btn-primary"
-        = link_to 'Back', invoices_path, class: "btn btn-default"
+        %br/
+        = item.link_to_remove "Remove this item"
+  .actions.pull-right
+    = f.button :submit, class: "btn btn-primary"
+    = link_to 'Back', invoices_path, class: "btn btn-default"
