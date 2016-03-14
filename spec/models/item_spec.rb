@@ -12,7 +12,6 @@ describe Item, type: :model do
   it { is_expected.to validate_numericality_of(:price) }
   it { is_expected.to validate_numericality_of(:quantity) }
   it { is_expected.to belong_to(:invoice) }
-  it { is_expected.to validate_presence_of(:invoice) }
 
   it 'validates that quantity is is integer' do
     item = FactoryGirl.build :item, quantity: 12.3
