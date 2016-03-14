@@ -7,7 +7,7 @@ RSpec.describe CompaniesController, type: :controller do
   end
 
   describe 'GET #show' do
-    it 'allows acce' do
+    it 'allows access' do
       company = FactoryGirl.create :company
       get :show, id: company.id
       expect(response).to be_succes
@@ -30,7 +30,7 @@ RSpec.describe CompaniesController, type: :controller do
     end
     context 'with invalid attributes' do
       it 'does not create company' do
-        company = FactoryGirl.build(:company, name: nil)
+        post :create, company: FactoryGirl.attributes_for(:company, name: nil)
         expect(Company.count).to eq 0
       end
       it 'renders new template' do
@@ -76,7 +76,7 @@ RSpec.describe CompaniesController, type: :controller do
       it 'renders 404' do
         delete :destroy, id: 2
         expect(response).to render_template("layouts/404")
-      end 
+      end
     end
   end
 end
