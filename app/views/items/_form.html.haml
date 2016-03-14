@@ -24,6 +24,7 @@
     %br/
     = f.number_field :quantity, class: "form-control"
   .field
+    = f.label :invoice
     = f.collection_select :invoice_id, Invoice.all,:id,:id, {prompt: "Select a Invoice"}, {class: "form-control"}
   .actions.pull-right
     = f.button :submit, class: "btn btn-primary"
